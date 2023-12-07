@@ -1,19 +1,21 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import crypto from "crypto";
+
+const { Schema } = mongoose;
 
 const UserSchema = new Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
     accessToken: {
         type: String,
-        default: () => crypto.randomBytes(128).toString("hex")
+        default: () => crypto.randomBytes(128).toString("hex"),
     }
 })
 
