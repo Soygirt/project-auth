@@ -1,9 +1,12 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
+//import { userRouter } from "./routes/userRouter";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-mongo";
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/MongoProject";
+mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
@@ -20,6 +23,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello Technigo!");
 });
+
 
 // Start the server
 app.listen(port, () => {
